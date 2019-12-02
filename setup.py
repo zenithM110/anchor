@@ -14,7 +14,7 @@ setup(
     name='anchor',
     version=__version__,
     description='A Cosmic Ray Air Shower Creator for the Antarctic Impulsive Transient Antenna',
-    long_description=long_description, 
+    long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/rprechelt/anchor',
     author='Remy L. Prechelt',
@@ -30,7 +30,7 @@ setup(
     ],
 
     keywords='anita cosmic ray air shower simulator physics radio neutrino',
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']), 
+    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     python_requires='>=3.6*, <4',
     install_requires=['numpy'],
     extras_require={
