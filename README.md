@@ -16,6 +16,12 @@ To install `anchor`, you will need `git` and Python >= 3.6. All three should be 
 
 The below instructions are assuming that `python` refers to Python 3.\*. If `python` still refers to a decrepit Python 2.\*, please replace `python` with `python3` and `pip` with `pip3`.
 
+Before installing `anchor`, you will need to set the `AIRES_RUN_DIR` environment variable telling `zhaires.py` (the low-level Aires wrapper package) where to store the Aires/ZHAireS output files. Each simulated shower is created in its own directory under `AIRES_RUN_DIR` with the name of the Aires task.
+
+    $ export AIRES_RUN_DIR=<path to directory with decent storage capacity>
+    
+This should be added to your `.{bash,zsh,fish,tcsh,c}rc` file if you plan on regularly using `anchor` or `zhaires.py`.
+
 The recommended method of installation is to first clone the package
 
     # git clone https://github.com/rprechelt/anchor
@@ -25,6 +31,24 @@ and then change into the cloned directory and install using `pip`
     # cd anchor
     # pip install --user -e .
 	
+We now need to install the various Aires/ZHAireS binaries that `anchor` uses to perform the shower simulations. Change into the `anchor/aires` directory. You will need to ensure that the following tree structure is recreated (if you are a member of ANITA, contact @rprechelt).
+
+    # cd anchor/aires/
+	# ls
+	    sources/
+    # ls sources/
+        Aires.2-8-4a.tar.gz
+        ZHAireS-betav28r18c-loopfresnel.tar
+        ZHAireS-betav28r18c-Upgoing.tar
+        ZHAireS-betav28r21-ANITA-reflected-beta0.2-Frcoeffs.tar
+        ZHAireS-betav28r24-RASPASS.tar
+		
+Once all the above tar-balls are in place, you can then run
+
+    # ./setup.sh
+	
+from the `anchor/aires` directory. This will compile all four versions of ZHAireS (this may take ~5 minutes).
+
 You should then make sure that the installation was successful by trying to import `anchor`
 
     # python -c 'import anchor'
