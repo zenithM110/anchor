@@ -32,7 +32,7 @@ setup(
     keywords='anita cosmic ray air shower simulator physics radio neutrino',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     python_requires='>=3.6*, <4',
-    install_requires=['numpy',
+    install_requires=['numpy', 'pyIGRF',
                       'zhaires @ git+git://github.com/rprechelt/zhaires.py'],
     extras_require={
         'test': ['pytest', 'coverage'],
