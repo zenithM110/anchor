@@ -1,6 +1,5 @@
 from setuptools import setup, find_packages
 from os import path
-from anchor import __version__
 
 # get the absolute path of this project
 here = path.abspath(path.dirname(__file__))
@@ -12,8 +11,9 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 # the standard setup info
 setup(
     name='anchor',
-    version=__version__,
-    description='A Cosmic Ray Air Shower Creator for the Antarctic Impulsive Transient Antenna',
+    version="0.1.0",
+    description=("A Cosmic Ray Air Shower Creator for "
+                 "the Antarctic Impulsive Transient Antenna"),
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/rprechelt/anchor',
@@ -32,7 +32,8 @@ setup(
     keywords='anita cosmic ray air shower simulator physics radio neutrino',
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     python_requires='>=3.6*, <4',
-    install_requires=['numpy'],
+    install_requires=['numpy',
+                      'zhaires @ git+git://github.com/rprechelt/zhaires.py'],
     extras_require={
         'test': ['pytest', 'coverage'],
     },
