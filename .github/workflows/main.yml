@@ -25,7 +25,10 @@ jobs:
 
     - name: Install anchor
       run: pip install -e ".[test]"
-      
+      env:
+        AIRES_RUN_DIR: ${GITHUB_WORKSPACE}
+	
     - name: Running pytest
       run: python -m pytest tests
-        
+      env:
+        AIRES_RUN_DIR: ${GITHUB_WORKSPACE}
