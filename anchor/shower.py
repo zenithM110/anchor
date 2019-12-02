@@ -209,9 +209,12 @@ def create_stratospheric(name: str,
     # if program exists, use that name
     pname = 'AiresQ' if kwargs.get('model') == 'AiresQ' else 'Aires'
 
+    # the binary directory for the stratospheric ZHAireS version
+    bindir = join(dirname(dirname(__file__)),
+                  *('aires', 'aires_stratospheric_install', 'bin'))
+
     # and the location of the corresponding Aires binary
-    program = join(dirname(dirname(__file__)),
-                   *('aires', 'aires_stratospheric_install', 'bin', pname))
+    program = join(bindir, pname)
 
     # create the simulation directory name
     directory = join(run_directory, f'{name}')
@@ -251,13 +254,21 @@ def create_stratospheric(name: str,
     # specify the output directory
     sim.file_directory(directory, 'All')
 
+    # we must specify the path to the RASPASS binary
+    # that creates the special particles
+    raspass = join(bindir, 'RASPASSprimary')
+
+    # and create the three special primary definitions
+    for particle in ["Proton", "Iron", "Electron"]:
+        sim(f"AddSpecialParticle RASPASS{particle} {raspass} {particle}")
+
     # get the name of RASSPAS primary
     if particle.lower() == 'proton':
         special = "RASPASSProton"
     elif particle.lower() == 'iron':
         special = "RASPASSIron"
     elif particle.lower() == 'electron':
-        special = "RASPASSelectron"
+        special = "RASPASSElectron"
     else:
         msg = (f"stratospheric showers are only supported "
                "for 'proton', 'iron', and 'electron' primaries.")
