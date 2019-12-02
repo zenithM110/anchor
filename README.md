@@ -5,7 +5,7 @@ A Cosmic Ray Air Shower Creator for the Antarctic Impulsive Transient Antenna (A
 ![GitHub](https://img.shields.io/github/license/rprechelt/anchor?logoColor=brightgreen)
 ![Python](https://img.shields.io/badge/python-3.6%20%7C%203.7%20%7C%203.8-blue)
 
-Anchor (*AN*ITA *C*osmic-Ray S*ho*wer Creat*or*) is a utility to automate the generation of cosmic ray shower templates for the Antarctic Impulsive Transient Antenna (ANITA). Anchor handles the raytracing, event setup, and Aires configuration necessary for all three primary classes of ANITA events (reflected, stratospheric, and upgoing events). Anchor also supports direct downgoing air showers (as would be used for ground radio arrays).
+Anchor (**AN**ITA **C**osmic-Ray S**ho**wer Creat**or**) is a utility to automate the generation of cosmic ray shower templates for the Antarctic Impulsive Transient Antenna (ANITA). Anchor handles the raytracing, event setup, and Aires configuration necessary for all three primary classes of ANITA events (reflected, stratospheric, and upgoing events). Anchor also supports direct downgoing air showers (as would be used for ground radio arrays).
 
 Anchor does not include the various ZHAireS versions needed to run the various simulations (it is a high-level wrapper). If you are member of the ANITA collaboration, contact @rprechelt on Slack for all the files you need. Otherwise, you will need to contact the authors of ZHAireS (anchor currently uses the following ZHAireS versions: `28r18c-loopfresnel`, `28r18c-Upgoing`, `28r21-ANITA-reflected`, and `28r24-RASPASS`). See the Aires [install script](aires/setup.sh) for details.
 
