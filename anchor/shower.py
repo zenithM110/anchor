@@ -17,7 +17,7 @@ def create_shower(name: str,
                   injection: float = 100.,
                   restart: bool = False,
                   default: Optional[str] = None,
-                  programq: Optional[str] = None,
+                  program: Optional[str] = None,
                   **kwargs) -> zhaires.Task:
     """
     Create a new ZHAireS task with the given event parameters.
@@ -73,9 +73,6 @@ def create_shower(name: str,
     # change to the sim directory
     os.chdir(directory)
 
-    # check if the simulation has already been start
-    exists = os.path.exists(join(directory, 'Zhaires.status'))
-
     # the common defaults file
     common_default = join(dirname(dirname(__file__)),
                           *('defaults', 'common_default.inp'))
@@ -113,7 +110,7 @@ def create_shower(name: str,
     sim.injection_altitude(injection)
 
     # and return the simulation
-    return sim, directory, exists
+    return sim
 
 
 def create_reflected(*args, **kwargs) -> zhaires.Task:
@@ -232,9 +229,6 @@ def create_stratospheric(name: str,
     # change to the sim directory
     os.chdir(directory)
 
-    # check if the simulation has already been start
-    exists = os.path.exists(join(directory, 'Zhaires.status'))
-
     # create a new simulation using the ANITA defaults
     sim = zhaires.Task(program=program, cmdfile=default)
 
@@ -296,7 +290,7 @@ def create_stratospheric(name: str,
     sim.read_cmd(f"SetGlobal RASPASSHeight {height*1e3:.2f}")
 
     # and return the simulation
-    return sim, directory, exists
+    return sim,
 
 
 # and set the appropriate docstrings
