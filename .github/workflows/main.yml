@@ -11,6 +11,9 @@ jobs:
       matrix:
         python-version: ['3.6.x', '3.7.x', '3.8.x']
         os: [ubuntu-18.04, ubuntu-16.04, macOS-10.14]
+        exclude:
+          - os: macOS-10.14
+            python-version: '3.8.x' 
 
     steps:
     - uses: actions/checkout@master
@@ -26,9 +29,10 @@ jobs:
     - name: Install anchor
       run: pip install -e ".[test]"
       env:
-        AIRES_RUN_DIR: ${GITHUB_WORKSPACE}
-	
+        AIRES_RUN_DIR: ${GITHUB_WORKSPACE}      
+      
     - name: Running pytest
       run: python -m pytest tests
       env:
         AIRES_RUN_DIR: ${GITHUB_WORKSPACE}
+        
